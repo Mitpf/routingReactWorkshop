@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
+import { Routes, Route } from 'react-router-dom';
 
 
 
@@ -14,12 +15,13 @@ function App() {
 
       <Header />
       <main id="main-content">
-        <Home />
-        <Login />
-        <Register />
-        <CreateGame />
-        <Catalog />
-
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/register' element={<Register />}></Route>
+          <Route path='/create-game' element={<CreateGame />}></Route>
+          <Route path='/catalog' element={<Catalog />}></Route>
+        </Routes>
       </main>
 
 
