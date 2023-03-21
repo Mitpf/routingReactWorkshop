@@ -13,6 +13,13 @@ export const getAll = async () => {
 };
 
 
+export const getOne = async (gameId) => {
+    const result = await request.get(`${baseUrl}/${gameId}`);
+    console.log(result);
+
+    return result;
+};
+
 export const create = async (gameData) => {
     const result = await request.post(baseUrl, gameData);
     console.log(result);
