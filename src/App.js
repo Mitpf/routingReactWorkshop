@@ -10,7 +10,7 @@ import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 
 
@@ -18,6 +18,8 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
 
+
+  const navigate = useNavigate();
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -33,7 +35,9 @@ function App() {
     const newGame = await gameService.create(data);
 
     //add to state
-
+    setGames(state => ([...state, newGame]));
+    // redirect to catalog
+    navigate('/catalog');
   }
 
   return (
