@@ -21,12 +21,16 @@ function App() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-        gameService.getAll()
-            .then(result => {
-                console.log(result);
-                setGames(result)
-            })
-    }, []);
+    gameService.getAll()
+      .then(result => {
+        console.log(result);
+        setGames(result)
+      })
+  }, []);
+
+  const onCreateGameSubmit = (data) => {
+    console.log(data);
+  }
 
   return (
 
@@ -38,8 +42,8 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
-          <Route path='/create-game' element={<CreateGame />}></Route>
-          <Route path='/catalog' element={<Catalog games={games}/>}></Route>
+          <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />}></Route>
+          <Route path='/catalog' element={<Catalog games={games} />}></Route>
         </Routes>
       </main>
 
