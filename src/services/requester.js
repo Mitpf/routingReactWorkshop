@@ -1,11 +1,23 @@
 
 
 
-export const request = async (method, url) => {
+export const request = async (method, url, data) => {
 
-    const response = await fetch(url, {
-        method,
-    });
+    const options = {};
+
+    if (method !== 'GET') {
+        options.method = method;
+
+        if (data) {
+            
+            options.headers = {
+                'content-type': 'application/json',
+            };
+            options.body = JSON.stringify(data);
+        }
+    }
+
+    const response = await fetch(url, options);
 
     try {
         const result = await response.json();

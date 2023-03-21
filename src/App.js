@@ -28,8 +28,12 @@ function App() {
       })
   }, []);
 
-  const onCreateGameSubmit = (data) => {
+  const onCreateGameSubmit = async (data) => {
     console.log(data);
+    const newGame = await gameService.create(data);
+
+    //add to state
+
   }
 
   return (
